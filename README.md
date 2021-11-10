@@ -70,5 +70,5 @@ There are multiple events fired during receiving/filtering data such as:
 
  ## License
 
-    License under the [MIT License](https://github.com/RickyDivjakovski/DotTwitchLib/blob/master/LICENSE). 
-	More information about the MIT license can be found [here](https://opensource.org/licenses/MIT)
+License under the [MIT License](https://github.com/RickyDivjakovski/DotTwitchLib/blob/master/LICENSE). 
+More information about the MIT license can be found [here](https://opensource.org/licenses/MIT)
