@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DotTwitchLib;
 
-namespace DovTwitchLib_example
+namespace DotTwitchLib_example
 {
     public partial class Form1 : Form
     {

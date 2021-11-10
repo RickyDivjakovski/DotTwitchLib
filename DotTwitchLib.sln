@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotTwitchLib", "DotTwitchLib\DotTwitchLib.csproj", "{25693BA9-0EC1-4A8E-81DC-45A23BEE3BB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DovTwitchLib example", "DovTwitchLib example\DovTwitchLib example.csproj", "{060D24AA-8C2E-4C66-A3F3-9B91F3EAD90C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotTwitchLib example", "DovTwitchLib example\DotTwitchLib example.csproj", "{060D24AA-8C2E-4C66-A3F3-9B91F3EAD90C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

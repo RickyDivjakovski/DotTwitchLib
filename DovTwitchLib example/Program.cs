@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DovTwitchLib_example
+namespace DotTwitchLib_example
 {
     static class Program
     {

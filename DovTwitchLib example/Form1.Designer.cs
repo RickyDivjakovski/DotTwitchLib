@@ -1,5 +1,5 @@
 ﻿
-namespace DovTwitchLib_example
+namespace DotTwitchLib_example
 {
     partial class Form1
     {
