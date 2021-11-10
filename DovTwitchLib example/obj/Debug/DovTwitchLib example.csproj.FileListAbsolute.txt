@@ -11,3 +11,16 @@ C:\Users\Alienware m15\source\repos\DotTwitchLib\DovTwitchLib example\obj\Debug\
 C:\Users\Alienware m15\source\repos\DotTwitchLib\DovTwitchLib example\bin\Debug\DotTwitchLib.dll
 C:\Users\Alienware m15\source\repos\DotTwitchLib\DovTwitchLib example\bin\Debug\DotTwitchLib.pdb
 C:\Users\Alienware m15\source\repos\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib example.csproj.CopyComplete
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\bin\Debug\DovTwitchLib example.exe.config
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\bin\Debug\DovTwitchLib example.exe
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\bin\Debug\DovTwitchLib example.pdb
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\bin\Debug\DotTwitchLib.dll
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\bin\Debug\DotTwitchLib.pdb
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib example.csproj.AssemblyReference.cache
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib_example.Form1.resources
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib_example.Properties.Resources.resources
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib example.csproj.GenerateResource.cache
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib example.csproj.CoreCompileInputs.cache
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib example.csproj.CopyComplete
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib example.exe
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DovTwitchLib example\obj\Debug\DovTwitchLib example.pdb

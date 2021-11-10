@@ -4,3 +4,9 @@ C:\Users\Alienware m15\source\repos\DotTwitchLib\DotTwitchLib\obj\Debug\DotTwitc
 C:\Users\Alienware m15\source\repos\DotTwitchLib\DotTwitchLib\obj\Debug\DotTwitchLib.csproj.CoreCompileInputs.cache
 C:\Users\Alienware m15\source\repos\DotTwitchLib\DotTwitchLib\obj\Debug\DotTwitchLib.dll
 C:\Users\Alienware m15\source\repos\DotTwitchLib\DotTwitchLib\obj\Debug\DotTwitchLib.pdb
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DotTwitchLib\bin\Debug\DotTwitchLib.dll
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DotTwitchLib\bin\Debug\DotTwitchLib.pdb
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DotTwitchLib\obj\Debug\DotTwitchLib.csproj.AssemblyReference.cache
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DotTwitchLib\obj\Debug\DotTwitchLib.csproj.CoreCompileInputs.cache
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DotTwitchLib\obj\Debug\DotTwitchLib.dll
+C:\Users\Alienware m15\Documents\GitHub\DotTwitchLib\DotTwitchLib\obj\Debug\DotTwitchLib.pdb

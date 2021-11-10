@@ -35,10 +35,10 @@ namespace DovTwitchLib_example
             this.ChatMessage = new System.Windows.Forms.TextBox();
             this.SendChat = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
-            this.Viewers = new System.Windows.Forms.Label();
             this.OpenWebpage = new System.Windows.Forms.Button();
             this.ShowDebug = new System.Windows.Forms.Button();
             this.ConnectButton = new System.Windows.Forms.Button();
+            this.Viewers = new System.Windows.Forms.Label();
             this.IRCPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.IRCMessage = new System.Windows.Forms.TextBox();
@@ -119,18 +119,6 @@ namespace DovTwitchLib_example
             this.HeaderPanel.Size = new System.Drawing.Size(585, 32);
             this.HeaderPanel.TabIndex = 2;
             // 
-            // Viewers
-            // 
-            this.Viewers.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Viewers.Font = new System.Drawing.Font("Roboto", 12F);
-            this.Viewers.ForeColor = System.Drawing.Color.White;
-            this.Viewers.Location = new System.Drawing.Point(408, 0);
-            this.Viewers.Name = "Viewers";
-            this.Viewers.Size = new System.Drawing.Size(177, 32);
-            this.Viewers.TabIndex = 14;
-            this.Viewers.Text = "🔴 Viewers: 0";
-            this.Viewers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // OpenWebpage
             // 
             this.OpenWebpage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -172,6 +160,18 @@ namespace DovTwitchLib_example
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = false;
             this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+            // 
+            // Viewers
+            // 
+            this.Viewers.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Viewers.Font = new System.Drawing.Font("Roboto", 12F);
+            this.Viewers.ForeColor = System.Drawing.Color.White;
+            this.Viewers.Location = new System.Drawing.Point(408, 0);
+            this.Viewers.Name = "Viewers";
+            this.Viewers.Size = new System.Drawing.Size(177, 32);
+            this.Viewers.TabIndex = 14;
+            this.Viewers.Text = "🔴 Viewers: 0";
+            this.Viewers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // IRCPanel
             // 
@@ -267,6 +267,7 @@ namespace DovTwitchLib_example
             this.Controls.Add(this.IRCPanel);
             this.Controls.Add(this.ChatPanel);
             this.Controls.Add(this.HeaderPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "DotTwitchLib Example";
             this.ChatPanel.ResumeLayout(false);
