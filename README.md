@@ -8,6 +8,7 @@
 Code located in the `master` branch is under development (for now).
 
 - [Download [zip]](https://github.com/RickyDivjakovski/DotTwitchLib/archive/main.zip)
+- [Download [dll]](https://github.com/RickyDivjakovski/DotTwitchLib/blob/main/DotTwitchLib/bin/Debug/DotTwitchLib.dll?raw=true)
 
  ## Implementation
 
