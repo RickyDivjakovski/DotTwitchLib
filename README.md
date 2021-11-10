@@ -12,4 +12,4 @@ Code located in the `master` branch is under development (for now).
  ## Implementation
 
 Add a reference to the library in your project
-    C#> using DotTwitchLib;
+    JS> using DotTwitchLib;
