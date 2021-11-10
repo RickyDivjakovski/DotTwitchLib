@@ -13,5 +13,4 @@ Code located in the `master` branch is under development (for now).
 
 Add a reference to the library in your project
 
-    PS> Set-ExecutionPolicy Unrestricted
-    PS> using DotTwitchLib;
+    using DotTwitchLib;
