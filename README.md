@@ -26,6 +26,8 @@ Set the Credentials or OAuthToken, Username(bot channel name) and Channel(To mon
     twicthClient1.TwitchChannel = "ttvbottestaccount";
     twicthClient1.OAuthToken = "TTVBotTestAccount";
 	
+The credentials are for a test account i made, please respect the account so everyone can use it for testing.
+	
 Additional properties are able to be set such as UseSSL, DebugMode and ReferenceColors.
 Usage of the client is simple.
 
