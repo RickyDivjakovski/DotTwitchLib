@@ -32,6 +32,7 @@ namespace DotTwitchLib_example
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ChatBox = new System.Windows.Forms.RichTextBox();
             this.ChatPanel = new System.Windows.Forms.Panel();
+            this.ViewersUpdateBox = new System.Windows.Forms.RichTextBox();
             this.ChatMessage = new System.Windows.Forms.TextBox();
             this.SendChat = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
@@ -62,21 +63,33 @@ namespace DotTwitchLib_example
             this.ChatBox.Name = "ChatBox";
             this.ChatBox.ReadOnly = true;
             this.ChatBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.ChatBox.Size = new System.Drawing.Size(585, 481);
+            this.ChatBox.Size = new System.Drawing.Size(1037, 481);
             this.ChatBox.TabIndex = 0;
             this.ChatBox.Text = "";
             this.ChatBox.TextChanged += new System.EventHandler(this.ChatBox_TextChanged);
             // 
             // ChatPanel
             // 
+            this.ChatPanel.Controls.Add(this.ViewersUpdateBox);
             this.ChatPanel.Controls.Add(this.ChatMessage);
             this.ChatPanel.Controls.Add(this.SendChat);
             this.ChatPanel.Controls.Add(this.ChatBox);
             this.ChatPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.ChatPanel.Location = new System.Drawing.Point(0, 32);
             this.ChatPanel.Name = "ChatPanel";
-            this.ChatPanel.Size = new System.Drawing.Size(585, 515);
+            this.ChatPanel.Size = new System.Drawing.Size(1037, 515);
             this.ChatPanel.TabIndex = 1;
+            // 
+            // ViewersUpdateBox
+            // 
+            this.ViewersUpdateBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ViewersUpdateBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.ViewersUpdateBox.ForeColor = System.Drawing.Color.White;
+            this.ViewersUpdateBox.Location = new System.Drawing.Point(750, 3);
+            this.ViewersUpdateBox.Name = "ViewersUpdateBox";
+            this.ViewersUpdateBox.Size = new System.Drawing.Size(275, 482);
+            this.ViewersUpdateBox.TabIndex = 2;
+            this.ViewersUpdateBox.Text = "";
             // 
             // ChatMessage
             // 
@@ -88,7 +101,7 @@ namespace DotTwitchLib_example
             this.ChatMessage.ForeColor = System.Drawing.Color.White;
             this.ChatMessage.Location = new System.Drawing.Point(7, 487);
             this.ChatMessage.Name = "ChatMessage";
-            this.ChatMessage.Size = new System.Drawing.Size(481, 27);
+            this.ChatMessage.Size = new System.Drawing.Size(930, 27);
             this.ChatMessage.TabIndex = 0;
             this.ChatMessage.Text = "Testing DotTwitchLib";
             // 
@@ -99,7 +112,7 @@ namespace DotTwitchLib_example
             this.SendChat.Enabled = false;
             this.SendChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendChat.ForeColor = System.Drawing.Color.White;
-            this.SendChat.Location = new System.Drawing.Point(494, 488);
+            this.SendChat.Location = new System.Drawing.Point(943, 489);
             this.SendChat.Name = "SendChat";
             this.SendChat.Size = new System.Drawing.Size(82, 23);
             this.SendChat.TabIndex = 1;
@@ -116,7 +129,7 @@ namespace DotTwitchLib_example
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(585, 32);
+            this.HeaderPanel.Size = new System.Drawing.Size(1037, 32);
             this.HeaderPanel.TabIndex = 2;
             // 
             // OpenWebpage
@@ -166,7 +179,7 @@ namespace DotTwitchLib_example
             this.Viewers.Dock = System.Windows.Forms.DockStyle.Right;
             this.Viewers.Font = new System.Drawing.Font("Roboto", 12F);
             this.Viewers.ForeColor = System.Drawing.Color.White;
-            this.Viewers.Location = new System.Drawing.Point(408, 0);
+            this.Viewers.Location = new System.Drawing.Point(860, 0);
             this.Viewers.Name = "Viewers";
             this.Viewers.Size = new System.Drawing.Size(177, 32);
             this.Viewers.TabIndex = 14;
@@ -179,7 +192,7 @@ namespace DotTwitchLib_example
             this.IRCPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IRCPanel.Location = new System.Drawing.Point(0, 547);
             this.IRCPanel.Name = "IRCPanel";
-            this.IRCPanel.Size = new System.Drawing.Size(585, 3);
+            this.IRCPanel.Size = new System.Drawing.Size(1037, 3);
             this.IRCPanel.TabIndex = 3;
             // 
             // panel4
@@ -190,7 +203,7 @@ namespace DotTwitchLib_example
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, -164);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(585, 167);
+            this.panel4.Size = new System.Drawing.Size(1037, 167);
             this.panel4.TabIndex = 4;
             // 
             // IRCMessage
@@ -203,7 +216,7 @@ namespace DotTwitchLib_example
             this.IRCMessage.ForeColor = System.Drawing.Color.White;
             this.IRCMessage.Location = new System.Drawing.Point(7, 134);
             this.IRCMessage.Name = "IRCMessage";
-            this.IRCMessage.Size = new System.Drawing.Size(481, 27);
+            this.IRCMessage.Size = new System.Drawing.Size(930, 27);
             this.IRCMessage.TabIndex = 2;
             this.IRCMessage.Text = "IRC Message";
             // 
@@ -214,7 +227,7 @@ namespace DotTwitchLib_example
             this.SendIRC.Enabled = false;
             this.SendIRC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendIRC.ForeColor = System.Drawing.Color.White;
-            this.SendIRC.Location = new System.Drawing.Point(494, 135);
+            this.SendIRC.Location = new System.Drawing.Point(943, 135);
             this.SendIRC.Name = "SendIRC";
             this.SendIRC.Size = new System.Drawing.Size(82, 23);
             this.SendIRC.TabIndex = 3;
@@ -233,7 +246,7 @@ namespace DotTwitchLib_example
             this.IRCBox.Name = "IRCBox";
             this.IRCBox.ReadOnly = true;
             this.IRCBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.IRCBox.Size = new System.Drawing.Size(585, 128);
+            this.IRCBox.Size = new System.Drawing.Size(1037, 128);
             this.IRCBox.TabIndex = 1;
             this.IRCBox.Text = "";
             this.IRCBox.TextChanged += new System.EventHandler(this.IRCBox_TextChanged);
@@ -246,7 +259,6 @@ namespace DotTwitchLib_example
             this.TwitchClient.TwitchChannel = "ttvbottestaccount";
             this.TwitchClient.UserName = "TTVBotTestAccount";
             this.TwitchClient.UseSSl = true;
-            this.TwitchClient.OnUserJoined += new System.EventHandler<DotTwitchLib.UserJoinedEventArgs>(this.TwitchClient_OnUserJoined);
             this.TwitchClient.OnChannelMessage += new System.EventHandler<DotTwitchLib.ChannelMessageEventArgs>(this.TwitchClient_OnChannelMessage);
             this.TwitchClient.OnIRCMessage += new System.EventHandler<DotTwitchLib.ChannelMessageEventArgs>(this.TwitchClient_OnIRCMessage);
             this.TwitchClient.OnBotCommandExecuted += new System.EventHandler<DotTwitchLib.CommandEventArgs>(this.TwitchClient_OnBotCommandExecuted);
@@ -256,14 +268,16 @@ namespace DotTwitchLib_example
             this.TwitchClient.OnReturnDebugData += new System.EventHandler<DotTwitchLib.ReturnDebugDataEventArgs>(this.TwitchClient_OnReturnDebugData);
             this.TwitchClient.OnSentMessage += new System.EventHandler<DotTwitchLib.SentMessageEventArgs>(this.TwitchClient_OnSentMessage);
             this.TwitchClient.OnSentIRCMessage += new System.EventHandler<DotTwitchLib.SentMessageEventArgs>(this.TwitchClient_OnSentIRCMessage);
-            this.TwitchClient.OnViewersUpdate += new System.EventHandler<DotTwitchLib.ViewerEventArgs>(this.TwitchClient_OnViewersUpdate);
+            this.TwitchClient.OnViewerCountUpdate += new System.EventHandler<DotTwitchLib.ViewerCountUpdateEventArgs>(this.TwitchClient_OnViewersUpdate);
+            this.TwitchClient.OnViewerJoin += new System.EventHandler<DotTwitchLib.ViewerJoinEventArgs>(this.TwitchClient_OnViewerJoin);
+            this.TwitchClient.OnViewerLeave += new System.EventHandler<DotTwitchLib.ViewerLeaveEventArgs>(this.TwitchClient_OnViewerLeave);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(585, 550);
+            this.ClientSize = new System.Drawing.Size(1037, 550);
             this.Controls.Add(this.IRCPanel);
             this.Controls.Add(this.ChatPanel);
             this.Controls.Add(this.HeaderPanel);
@@ -297,6 +311,7 @@ namespace DotTwitchLib_example
         private System.Windows.Forms.RichTextBox IRCBox;
         private DotTwitchLib.TwitchClient TwitchClient;
         private System.Windows.Forms.Label Viewers;
+        private System.Windows.Forms.RichTextBox ViewersUpdateBox;
     }
 }
 

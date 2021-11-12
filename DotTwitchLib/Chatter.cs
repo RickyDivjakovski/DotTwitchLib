@@ -5,7 +5,7 @@ namespace DotTwitchLib
     // Create a chatter class
     public class Chatter
     {
-        public string Name;
+        public string Name = string.Empty;
         public Color ReferenceColor = Color.White;
 
         public Chatter(string name)

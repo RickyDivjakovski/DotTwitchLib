@@ -4,21 +4,6 @@ using System.Drawing;
 namespace DotTwitchLib
 {
     // Create event args
-
-    public class UserJoinedEventArgs : EventArgs
-    {
-        public string Channel { get; internal set; }
-        public string User { get; internal set; }
-        public string Time { get; internal set; }
-
-        public UserJoinedEventArgs(string channel, string user)
-        {
-            this.Time = DateTime.Now.ToString("HH:mm");
-            this.Channel = channel;
-            this.User = user;
-        }
-    }
-
     public class ReturnDebugDataEventArgs : EventArgs
     {
         public string Message { get; internal set; }
@@ -28,6 +13,30 @@ namespace DotTwitchLib
         {
             this.Time = DateTime.Now.ToString("HH:mm");
             this.Message = message;
+        }
+    }
+
+    public class ViewerJoinEventArgs : EventArgs
+    {
+        public string Name { get; internal set; }
+        public DateTime TimeJoined { get; internal set; }
+
+        public ViewerJoinEventArgs(Viewer v)
+        {
+            this.TimeJoined = v.JoinTime;
+            this.Name = v.Name;
+        }
+    }
+
+    public class ViewerLeaveEventArgs : EventArgs
+    {
+        public string Name { get; internal set; }
+        public DateTime TimeLeave { get; internal set; }
+
+        public ViewerLeaveEventArgs(Viewer v)
+        {
+            this.TimeLeave = DateTime.Now;
+            this.Name = v.Name;
         }
     }
 
@@ -49,7 +58,7 @@ namespace DotTwitchLib
         }
     }
 
-    public class ViewerEventArgs : EventArgs
+    public class ViewerCountUpdateEventArgs : EventArgs
     {
         public int Vips { get; internal set; }
         public int Moderators { get; internal set; }
@@ -58,7 +67,7 @@ namespace DotTwitchLib
         public int GlobalMods { get; internal set; }
         public int Viewers { get; internal set; }
 
-        public ViewerEventArgs(int vips, int moderators, int staff, int admins, int globalmods, int viewers)
+        public ViewerCountUpdateEventArgs(int vips, int moderators, int staff, int admins, int globalmods, int viewers)
         {
             this.Vips = vips;
             this.Moderators = moderators;

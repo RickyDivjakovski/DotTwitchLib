@@ -52,7 +52,6 @@ The client is efficient at returning data so operations are all through events.
 
 There are multiple events fired during receiving/filtering data such as:
 
-- OnUserJoined(Experimental and only works within IRC)
 - OnChannelMessage
 - OnIRCMessage
 - OnBotCommandExecuted
@@ -63,6 +62,8 @@ There are multiple events fired during receiving/filtering data such as:
 - OnSentMessage
 - OnSentIRCMessage
 - OnViewersUpdate(Experimental and only returns logged in viewers)
+- OnViewerJoin(Experimental and only returns logged in viewers)
+- OnViewerLeave(Experimental and only returns logged in viewers)
 
  ## Disposal
  

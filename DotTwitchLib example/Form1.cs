@@ -129,13 +129,7 @@ namespace DotTwitchLib_example
             IRCBox.Text = IRCBox.Text + e.User + " executed twitch command " + e.Command + " with args " + e.Args + "\n";
         }
 
-        private void TwitchClient_OnUserJoined(object sender, DotTwitchLib.UserJoinedEventArgs e)
-        {
-            // Experimental, only fires for users that "JOIN #<channel>" with an IRC client
-            IRCBox.Text = IRCBox.Text + e.User + " has joined\n";
-        }
-
-        private void TwitchClient_OnViewersUpdate(object sender, DotTwitchLib.ViewerEventArgs e)
+        private void TwitchClient_OnViewersUpdate(object sender, DotTwitchLib.ViewerCountUpdateEventArgs e)
         {
             int viewerCount = e.Vips + e.Admins + e.GlobalMods + e.Moderators + e.Staff + e.Viewers;
             Viewers.Text = "🔴 Viewers: " + viewerCount;
@@ -146,6 +140,18 @@ namespace DotTwitchLib_example
         private void RollDice(string user)
         {
             TwitchClient.SendChatMessage("@" + user + " rolled a " + RandomGenerator.Next(1, 7));
+        }
+
+
+        // 601, 589
+        private void TwitchClient_OnViewerJoin(object sender, ViewerJoinEventArgs e)
+        {
+            ViewersUpdateBox.Text = ViewersUpdateBox.Text + e.Name + " has JOINED \n";
+        }
+
+        private void TwitchClient_OnViewerLeave(object sender, ViewerLeaveEventArgs e)
+        {
+            ViewersUpdateBox.Text = ViewersUpdateBox.Text + e.Name + " has LEFT \n";
         }
     }
 }

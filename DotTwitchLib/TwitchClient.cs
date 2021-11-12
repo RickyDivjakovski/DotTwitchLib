@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Net;
+using System.Windows.Forms;
 
 namespace DotTwitchLib
 {
@@ -67,54 +68,115 @@ namespace DotTwitchLib
             set { this.referenceColors = value; }
         }
 
+        private List<Viewer> viewers = new List<Viewer>();
+
         private List<Chatter> chatters = new List<Chatter>();
-        [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns people who have engaged in session")] public List<Chatter> Chatters { get { return chatters; } }
+        [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns people who have engaged in session")] 
+        public List<Chatter> Chatters { get { return chatters; } }
 
-        private List<string> vips = new List<string>();
         [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns Vip viewers (Registered users)")]
-        public List<string> Vips { get { return vips; } }
+        public List<Viewer> Vips
+        {
+            get
+            {
+                List<Viewer> returnData = new List<Viewer>();
+                foreach (Viewer v in viewers) if (v.Type == ViewerType.Vip) returnData.Add(v);
+                return returnData;
+            }
+        }
 
-        private List<string> moderators = new List<string>();
         [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns Moderator viewers (Registered users)")]
-        public List<string> Moderators { get { return moderators; } }
+        public List<Viewer> Moderators
+        {
+            get
+            {
+                List<Viewer> returnData = new List<Viewer>();
+                foreach (Viewer v in viewers) if (v.Type == ViewerType.Moderator) returnData.Add(v);
+                return returnData;
+            }
+        }
 
-        private List<string> staff = new List<string>();
         [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns Staff viewers (Registered users)")]
-        public List<string> Staff { get { return staff; } }
+        public List<Viewer> Staff
+        {
+            get
+            {
+                List<Viewer> returnData = new List<Viewer>();
+                foreach (Viewer v in viewers) if (v.Type == ViewerType.Staff) returnData.Add(v);
+                return returnData;
+            }
+        }
 
-        private List<string> admins = new List<string>();
         [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns Admin viewers (Registered users)")]
-        public List<string> Admins { get { return admins; } }
+        public List<Viewer> Admins
+        {
+            get
+            {
+                List<Viewer> returnData = new List<Viewer>();
+                foreach (Viewer v in viewers) if (v.Type == ViewerType.Admin) returnData.Add(v);
+                return returnData;
+            }
+        }
 
-        private List<string> globalMods = new List<string>();
         [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns Global mod viewers (Registered users)")]
-        public List<string> GlobalMods { get { return globalMods; } }
+        public List<Viewer> GlobalMods
+        {
+            get
+            {
+                List<Viewer> returnData = new List<Viewer>();
+                foreach (Viewer v in viewers) if (v.Type == ViewerType.GlobalMod) returnData.Add(v);
+                return returnData;
+            }
+        }
 
-        private List<string> viewers = new List<string>();
         [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns Standard viewers (Registered users)")]
-        public List<string> Viewers { get { return viewers; } }
+        public List<Viewer> StandardViewers
+        {
+            get
+            {
+                List<Viewer> returnData = new List<Viewer>();
+                foreach (Viewer v in viewers) if (v.Type == ViewerType.Standard) returnData.Add(v);
+                return returnData;
+            }
+        }
+
+        [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns all viewers (Registered users)")]
+        public List<Viewer> AllViewers { get { return viewers; } }
 
         [Category("DotTwitchLib - Viewers"), Browsable(true), Description("Returns viewer count (Registered users)")]
-        public int ViewerCount { get { return vips.Count + moderators.Count + staff.Count + admins.Count + globalMods.Count + viewers.Count; } }
+        public int ViewerCount { get { return viewers.Count; } }
+        
 
         // Create events
         private AsyncOperation BgOperation;
 
-        public event EventHandler<UserJoinedEventArgs> OnUserJoined = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When a message is posted")]
         public event EventHandler<ChannelMessageEventArgs> OnChannelMessage = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When an IRC message is posted")]
         public event EventHandler<ChannelMessageEventArgs> OnIRCMessage = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When a command is executed in chat with prefix \"!\"")]
         public event EventHandler<CommandEventArgs> OnBotCommandExecuted = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When a twitch command is executed in chat with prefix \"/\"")]
         public event EventHandler<CommandEventArgs> OnTwitchCommandExecuted = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When connected")]
         public event EventHandler<EventArgs> OnConnect = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When pinging the server")]
         public event EventHandler<EventArgs> OnPing = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When debug data is returned(debug mode must be enabled)")]
         public event EventHandler<ReturnDebugDataEventArgs> OnReturnDebugData = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When a message is sent by this library")]
         public event EventHandler<SentMessageEventArgs> OnSentMessage = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When an IRC message is sent by this library")]
         public event EventHandler<SentMessageEventArgs> OnSentIRCMessage = delegate { };
-        public event EventHandler<ViewerEventArgs> OnViewersUpdate = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When the viewer count is updated")]
+        public event EventHandler<ViewerCountUpdateEventArgs> OnViewerCountUpdate = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When a viewer joins(will only apply for logged in twitch users)")]
+        public event EventHandler<ViewerJoinEventArgs> OnViewerJoin = delegate { };
+        [Category("DotTwitchLib"), Browsable(true), Description("When a viewer joins(will only apply for logged in twitch users)")]
+        public event EventHandler<ViewerLeaveEventArgs> OnViewerLeave = delegate { };
 
         private void onChannelMessage(ChannelMessageEventArgs o) { BgOperation.Post(x => OnChannelMessage(this, (ChannelMessageEventArgs)x), o); }
         private void onIRCMessage(ChannelMessageEventArgs o) { BgOperation.Post(x => OnIRCMessage(this, (ChannelMessageEventArgs)x), o); }
-        private void onUserJoined(UserJoinedEventArgs o) { BgOperation.Post(x => OnUserJoined(this, (UserJoinedEventArgs)x), o); }
         private void onBotCommandExecuted(CommandEventArgs o) { BgOperation.Post(x => OnBotCommandExecuted(this, (CommandEventArgs)x), o); }
         private void onTwitchCommandExecuted(CommandEventArgs o) { BgOperation.Post(x => OnTwitchCommandExecuted(this, (CommandEventArgs)x), o); }
         private void onConnect(EventArgs o) { BgOperation.Post(x => OnConnect(this, (EventArgs)x), o); }
@@ -122,7 +184,9 @@ namespace DotTwitchLib
         private void onReturnDebugData(ReturnDebugDataEventArgs o) { BgOperation.Post(x => OnReturnDebugData(this, (ReturnDebugDataEventArgs)x), o); }
         private void onSentMessage(SentMessageEventArgs o) { BgOperation.Post(x => OnSentMessage(this, (SentMessageEventArgs)x), o); }
         private void onSentIRCMessage(SentMessageEventArgs o) { BgOperation.Post(x => OnSentIRCMessage(this, (SentMessageEventArgs)x), o); }
-        private void onViewersUpdate(ViewerEventArgs o) { BgOperation.Post(x => OnViewersUpdate(this, (ViewerEventArgs)x), o); }
+        private void onViewerCountUpdate(ViewerCountUpdateEventArgs o) { BgOperation.Post(x => OnViewerCountUpdate(this, (ViewerCountUpdateEventArgs)x), o); }
+        private void onViewerJoin(ViewerJoinEventArgs o) { BgOperation.Post(x => OnViewerJoin(this, (ViewerJoinEventArgs)x), o); }
+        private void onViewerLeave(ViewerLeaveEventArgs o) { BgOperation.Post(x => OnViewerLeave(this, (ViewerLeaveEventArgs)x), o); }
 
         // Create other required objects
         private TcpClient tcpClient;
@@ -131,6 +195,9 @@ namespace DotTwitchLib
         private StreamReader inputStream;
         private StreamWriter outputStream;
         private readonly Random RandomGenerator = new Random();
+        private bool FirstRun = true;
+
+        public enum ViewerType { Vip, Moderator, Staff, Admin, GlobalMod, Standard }
 
         // Initialize client
         public TwitchClient()
@@ -219,23 +286,55 @@ namespace DotTwitchLib
                 response.Close();
                 response.Dispose();
 
-                viewData = viewData.Split('{')[3].Split('}').First();
+                viewData = viewData.Replace("\"", "").Split('{')[3].Split('}').First();
 
-                vips.Clear();
-                moderators.Clear();
-                staff.Clear();
-                admins.Clear();
-                globalMods.Clear();
+                List<Viewer> OldViewData = new List<Viewer>();
+                List<Viewer> NewViewData = new List<Viewer>();
+                if (viewers.Count > 0) foreach (Viewer oV in viewers) OldViewData.Add(oV);
+
                 viewers.Clear();
 
-                foreach (string viewer in viewData.Split(':')[2].Replace("[", "").Split(']').First().Replace("\"", "").Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) vips.Add(viewer);
-                foreach (string viewer in viewData.Split(':')[3].Replace("[", "").Split(']').First().Replace("\"", "").Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) moderators.Add(viewer);
-                foreach (string viewer in viewData.Split(':')[4].Replace("[", "").Split(']').First().Replace("\"", "").Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) staff.Add(viewer);
-                foreach (string viewer in viewData.Split(':')[5].Replace("[", "").Split(']').First().Replace("\"", "").Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) admins.Add(viewer);
-                foreach (string viewer in viewData.Split(':')[6].Replace("[", "").Split(']').First().Replace("\"", "").Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) globalMods.Add(viewer);
-                foreach (string viewer in viewData.Split(':')[7].Replace("[", "").Split(']').First().Replace("\"", "").Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) viewers.Add(viewer);
+                foreach (string viewer in viewData.Split(':')[2].Replace("[", "").Split(']').First().Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) NewViewData.Add(new Viewer(viewer, ViewerType.Vip));
+                foreach (string viewer in viewData.Split(':')[3].Replace("[", "").Split(']').First().Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) NewViewData.Add(new Viewer(viewer, ViewerType.Moderator));
+                foreach (string viewer in viewData.Split(':')[4].Replace("[", "").Split(']').First().Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) NewViewData.Add(new Viewer(viewer, ViewerType.Staff));
+                foreach (string viewer in viewData.Split(':')[5].Replace("[", "").Split(']').First().Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) NewViewData.Add(new Viewer(viewer, ViewerType.Admin));
+                foreach (string viewer in viewData.Split(':')[6].Replace("[", "").Split(']').First().Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) NewViewData.Add(new Viewer(viewer, ViewerType.GlobalMod));
+                foreach (string viewer in viewData.Split(':')[7].Replace("[", "").Split(']').First().Split(',')) if (!string.IsNullOrWhiteSpace(viewer)) NewViewData.Add(new Viewer(viewer, ViewerType.Standard));
 
-                onViewersUpdate(new ViewerEventArgs(vips.Count, moderators.Count, staff.Count, admins.Count, globalMods.Count, viewers.Count));
+                if (FirstRun) { OldViewData = NewViewData; FirstRun = false; }
+
+                Viewer view;
+
+                foreach (Viewer newView in NewViewData)
+                {
+                    bool newViewer = true;
+                    view = newView;
+                    foreach (Viewer oldView in OldViewData)
+                    {
+                        if (newView.Name == oldView.Name)
+                        {
+                            newViewer = false;
+                            view = oldView; 
+                            break;
+                        }
+                    }
+                    viewers.Add(view);
+                    if (newViewer) onViewerJoin(new ViewerJoinEventArgs(view));
+                }
+
+                foreach (Viewer oldView in OldViewData)
+                {
+                    bool viewerLeft = true;
+                    view = oldView;
+                    foreach (Viewer newView in NewViewData) if (newView.Name == oldView.Name) 
+                        { 
+                            viewerLeft = false;
+                            break;
+                        }
+                    if (viewerLeft) onViewerLeave(new ViewerLeaveEventArgs(view));
+                }
+
+                onViewerCountUpdate(new ViewerCountUpdateEventArgs(Vips.Count, Moderators.Count, Staff.Count, Admins.Count, GlobalMods.Count, StandardViewers.Count));
                 Thread.Sleep(TimeSpan.FromMinutes(2));
             }
         }
@@ -246,7 +345,6 @@ namespace DotTwitchLib
             if (line != null && !string.IsNullOrWhiteSpace(line) && !debugMode)
             {
                 if (line.Split(' ')[1] == "001") { onConnect(null); isConnected = true; }
-                else if (line.Split(' ')[1] == "JOIN") onUserJoined(new UserJoinedEventArgs(twitchChannel, line.Split('!').First().Split(':').Last()));
                 else if (line.Contains(" PRIVMSG "))
                 {
                     string DisplayName = line.Split(new[] { "display-name=" }, StringSplitOptions.None).Last().Split(';').First();
